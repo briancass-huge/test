@@ -426,11 +426,7 @@ input[type=range]:active::-webkit-slider-thumb { transform: scale(1.15); }
 </div>
 
 <script>
-const GEAR = [
-  'Injuries','Illness','Diagnostics','Medications',
-  'Surgeries','Emergencies','Recovery','Specialist',
-  'Dental','Vaccinations'
-];
+const GEAR = Array(10).fill('Vet Visit');
 
 const DESTS = {
   5000:'Neighborhood Trail', 10000:'Through the Woods',
