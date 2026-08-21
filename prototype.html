@@ -3,558 +3,397 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ManyPets — You Don't Carry It Alone</title>
+<title>ManyPets — The Hike</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --p:        #5B3FE0;
-  --p-light:  #EDE9FF;
-  --p-mid:    #9B87F5;
-  --g50:      #FAFAFA;
-  --g100:     #F4F4F5;
-  --g200:     #E4E4E7;
-  --g400:     #A1A1AA;
-  --g700:     #3F3F46;
-  --g900:     #18181B;
-  --amber:    #D97706;
-  --r: 12px;
-  --sh: 0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.04);
+  --p:         #5B3FE0;
+  --p-light:   #EDE9FF;
+  --p-mid:     #9B87F5;
+  --g50:       #FAFAFA;
+  --g100:      #F4F4F5;
+  --g200:      #E4E4E7;
+  --g300:      #D4D4D8;
+  --g400:      #A1A1AA;
+  --g600:      #52525B;
+  --g900:      #18181B;
+  --amber:     #D97706;
+  --amber-bg:  #FFFBEB;
+  --amber-bd:  #FCD34D;
+  --sh:        0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.04);
+  --r:         12px;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: var(--g50);
   color: var(--g900);
-  max-width: 880px;
+  max-width: 920px;
   margin: 0 auto;
-  padding: 2.5rem 1.5rem 5rem;
+  padding: 2rem 1.25rem 5rem;
   line-height: 1.5;
 }
 
-/* ── Header ─────────────────────────────────── */
-.brand {
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--p);
-  margin-bottom: .6rem;
-}
-
-h1 {
-  font-size: clamp(1.4rem, 3.5vw, 2.1rem);
-  font-weight: 800;
-  line-height: 1.18;
-  margin-bottom: .4rem;
-}
-
+/* ─ Header ──────────────────────────── */
+.brand { font-size: .7rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--p); margin-bottom: .5rem; }
+h1 { font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 800; line-height: 1.18; margin-bottom: .35rem; }
 h1 em { color: var(--p); font-style: normal; }
+.tagline { color: var(--g400); font-size: .9rem; margin-bottom: 2rem; }
 
-.sub {
-  color: var(--g400);
-  font-size: .9rem;
-  margin-bottom: 2rem;
-}
-
-/* ── Summary strip ───────────────────────────── */
+/* ─ Summary strip ───────────────────── */
 .strip {
-  display: flex;
-  align-items: stretch;
-  background: white;
-  border: 1.5px solid var(--g200);
-  border-radius: 100px;
-  overflow: hidden;
-  width: fit-content;
-  margin-bottom: 2rem;
+  display: flex; align-items: stretch;
+  background: white; border: 1.5px solid var(--g200);
+  border-radius: 100px; overflow: hidden;
+  width: fit-content; margin-bottom: 1.75rem;
   box-shadow: var(--sh);
 }
+.si { display: flex; flex-direction: column; align-items: center; padding: .5rem 1.1rem; border-right: 1px solid var(--g200); gap: 1px; }
+.si:last-child { border-right: none; }
+.si .sl { font-size: .52rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--g400); }
+.si .sv { font-size: .88rem; font-weight: 800; color: var(--p); font-variant-numeric: tabular-nums; }
 
-.strip-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: .55rem 1.3rem;
-  border-right: 1px solid var(--g200);
-  gap: 1px;
-}
-.strip-item:last-child { border-right: none; }
-.strip-item .sl { font-size: .54rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--g400); }
-.strip-item .sv { font-size: .88rem; font-weight: 800; color: var(--p); }
+/* ─ Cards ───────────────────────────── */
+.card { background: white; border: 1.5px solid var(--g200); border-radius: var(--r); padding: 1.25rem 1.5rem; margin-bottom: .875rem; box-shadow: var(--sh); }
+.card-label { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--g400); margin-bottom: 1rem; }
 
-/* ── Cards ───────────────────────────────────── */
-.card {
-  background: white;
-  border: 1.5px solid var(--g200);
-  border-radius: var(--r);
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  box-shadow: var(--sh);
-}
-
-.card-label {
-  font-size: .62rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .12em;
-  color: var(--g400);
-  margin-bottom: 1.25rem;
-}
-
-/* ── Hikers ──────────────────────────────────── */
-.hikers {
-  display: flex;
-  align-items: flex-end;
-  gap: .5rem;
-  margin-bottom: 1.25rem;
-}
-
-.hiker { display: flex; flex-direction: column; align-items: center; gap: 3px; }
-
-.hk {
-  width: 44px;
-  height: 52px;
-  border-radius: 8px;
-  border: 2px solid;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: .56rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .05em;
-  text-align: center;
-  line-height: 1.2;
-}
-
-.hk-you  { border-color: var(--g400); color: var(--g700); background: var(--g100); }
-.hk-dog  { border-color: var(--amber); color: var(--amber); background: #FFFBEB; }
-.hk-us   { border-color: var(--p); color: var(--p); background: var(--p-light); }
-
-.hk-name { font-size: .58rem; color: var(--g400); font-weight: 600; }
-.hk-sep  { font-size: 1rem; color: var(--g200); margin-bottom: .5rem; }
-
-/* ── Trail ───────────────────────────────────── */
-.trail-wrap {
-  position: relative;
-  height: 68px;
-  margin: 0 0 .25rem;
-}
-
+/* ─ Trail bar ───────────────────────── */
+.trail-wrap { position: relative; height: 60px; margin: 0; }
 .trail-track {
-  position: absolute;
-  top: 50%;
-  left: 0; right: 0;
-  height: 8px;
-  border-radius: 4px;
-  background: var(--g200);
-  transform: translateY(-50%);
-  overflow: hidden;
+  position: absolute; top: 50%; left: 0; right: 0;
+  height: 7px; border-radius: 4px; background: var(--g200);
+  transform: translateY(-50%); overflow: hidden;
 }
+.t-fill-pre  { position: absolute; left: 0; top: 0; bottom: 0; background: var(--p-light); transition: width .35s ease; }
+.t-fill-post { position: absolute; top: 0; bottom: 0; background: var(--p); transition: left .35s ease, width .35s ease; }
 
-.fill-pre {
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  background: var(--p-light);
-  transition: width .35s ease;
-}
-
-.fill-post {
-  position: absolute;
-  top: 0; bottom: 0;
-  background: var(--p);
-  transition: left .35s ease, width .35s ease;
-}
-
-.t-marker {
-  position: absolute;
-  top: 50%;
+.t-pin {
+  position: absolute; top: 50%;
   transform: translate(-50%, -50%);
-  z-index: 5;
-  transition: left .35s ease;
+  z-index: 5; transition: left .35s ease;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
 }
-
-.t-dot {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: .78rem;
+.t-pin-dot {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .72rem;
 }
+.t-pin-dot-ded { background: white; border: 2.5px solid var(--p); box-shadow: 0 0 0 2px var(--p-light); }
+.t-pin-dot-lim { background: var(--p); border: 2px solid white; box-shadow: 0 0 0 2px var(--p); color: white; font-size: .68rem; }
+.t-pin-tag { font-size: .54rem; font-weight: 700; color: var(--p); white-space: nowrap; background: white; padding: 1px 4px; border-radius: 3px; border: 1px solid var(--p-light); }
 
-.t-dot-ded {
-  background: white;
-  border: 2.5px solid var(--p);
-  box-shadow: 0 0 0 2px var(--p-light);
-}
+.trail-ends { display: flex; justify-content: space-between; font-size: .63rem; color: var(--g400); font-weight: 500; margin-top: 1.6rem; }
 
-.t-dot-lim {
-  background: var(--p);
-  border: 2.5px solid white;
-  box-shadow: 0 0 0 2px var(--p);
-}
-
-.t-tag {
-  position: absolute;
-  bottom: -19px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: .57rem;
-  font-weight: 700;
-  color: var(--p);
-  white-space: nowrap;
-  background: white;
-  padding: 1px 5px;
-  border-radius: 3px;
-  border: 1px solid var(--p-light);
-}
-
-.trail-ends {
-  display: flex;
-  justify-content: space-between;
-  font-size: .65rem;
-  color: var(--g400);
-  font-weight: 500;
-  margin-top: 1.75rem;
-}
-
-.trail-narrative {
-  font-size: .8rem;
-  color: var(--g700);
-  background: var(--p-light);
-  border-left: 3px solid var(--p);
-  padding: .65rem .9rem;
-  border-radius: 0 6px 6px 0;
-  margin-top: .75rem;
-  line-height: 1.45;
-}
-
-.trail-narrative strong { color: var(--p); }
-
-/* ── Pack section ────────────────────────────── */
-.handoff-badge {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.handoff-badge span {
-  display: inline-block;
-  background: var(--p);
-  color: white;
-  font-size: .64rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  padding: .28rem .85rem;
-  border-radius: 100px;
-}
-
-.packs-grid {
+/* ─ Story grid ─────────────────────── */
+.story-grid {
   display: grid;
-  grid-template-columns: 1fr 60px 1fr;
-  gap: .75rem;
+  grid-template-columns: 1fr 72px 1fr;
+  gap: 0;
   align-items: start;
 }
 
-.pack-label {
-  font-size: .63rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  margin-bottom: .45rem;
-}
+/* ─ Story columns ───────────────────── */
+.story-col { padding: .5rem 0; }
 
-.pack-label-you { color: var(--g400); }
-.pack-label-us  { color: var(--p); }
+.col-header { margin-bottom: .9rem; }
+.col-title { font-size: .82rem; font-weight: 700; display: block; color: var(--g900); margin-bottom: .1rem; }
+.col-sub { font-size: .7rem; font-weight: 600; color: var(--g400); }
+.col-sub-purple { color: var(--p); }
 
-.pack-box {
-  border: 2px solid;
-  border-radius: 10px;
-  padding: .9rem;
-  min-height: 108px;
-}
-
-.pack-box-you { border-color: var(--g200); background: var(--g100); }
-.pack-box-us  { border-color: var(--p-mid); background: var(--p-light); }
-
-.pack-chips {
+/* ─ Character row ───────────────────── */
+.chars-row {
   display: flex;
-  flex-wrap: wrap;
-  gap: .32rem;
+  align-items: flex-end;
+  gap: .5rem;
+  margin-bottom: 1rem;
 }
+
+.chr {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 4px;
+}
+
+.chr-box {
+  width: 52px; height: 60px;
+  border-radius: 8px; border: 2px solid;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .58rem; font-weight: 800;
+  text-transform: uppercase; text-align: center; line-height: 1.3;
+  letter-spacing: .04em;
+  position: relative;
+}
+
+/* YOU */
+.chr-you .chr-box { border-color: var(--g400); color: var(--g600); background: var(--g100); }
+/* DOG */
+.chr-dog .chr-box { border-color: var(--amber-bd); color: var(--amber); background: var(--amber-bg); width: 44px; height: 52px; }
+/* MANYPETS — waiting (before) */
+.chr-friend-wait .chr-box { border-color: var(--g300); color: var(--g400); background: var(--g100); border-style: dashed; }
+/* MANYPETS — active (after) */
+.chr-friend-act .chr-box  { border-color: var(--p); color: var(--p); background: var(--p-light); }
+
+.chr-name { font-size: .54rem; color: var(--g400); font-weight: 600; }
+
+.chr-status {
+  display: inline-block; font-size: .5rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .06em;
+  padding: 1px 5px; border-radius: 3px;
+}
+.status-heavy { background: var(--g200); color: var(--g600); }
+.status-light  { background: #D1FAE5; color: #065F46; }
+.status-empty  { background: var(--g100); color: var(--g400); }
+.status-helping{ background: var(--p-light); color: var(--p); }
+
+/* ─ Packs area ──────────────────────── */
+.packs-area {
+  display: flex; gap: .5rem;
+}
+
+.mini-pack {
+  flex: 1; border: 1.5px solid var(--g200);
+  border-radius: 8px; padding: .6rem .65rem;
+  background: var(--g100); min-height: 80px;
+}
+
+.mini-pack-friend { background: var(--p-light); border-color: var(--p-mid); }
+.mini-pack-empty  { background: var(--g50); border-style: dashed; }
+
+.mp-label { font-size: .57rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--g400); margin-bottom: .4rem; }
+.mp-label-purple { color: var(--p); }
+.mp-empty-msg { font-size: .65rem; color: var(--g400); font-style: italic; margin-top: .25rem; }
+
+.chips { display: flex; flex-wrap: wrap; gap: .28rem; }
 
 .chip {
-  font-size: .6rem;
-  font-weight: 700;
-  padding: .2rem .45rem;
-  border-radius: 4px;
-  background: white;
-  border: 1.5px solid var(--g200);
-  color: var(--g700);
-  transition: background .22s ease, border-color .22s ease, color .22s ease;
-  cursor: default;
-  user-select: none;
+  font-size: .57rem; font-weight: 600; padding: .18rem .4rem;
+  border-radius: 4px; background: white; border: 1.5px solid var(--g300);
+  color: var(--g600); transition: background .22s ease, border-color .22s ease, color .22s ease;
+  white-space: nowrap;
 }
 
-.chip.us {
-  background: var(--p);
-  border-color: var(--p);
-  color: white;
+.chip-static { cursor: default; }
+.chip-theirs { background: var(--p); border-color: var(--p); color: white; }
+
+/* ─ Divider column ──────────────────── */
+.divider-col {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 3rem .25rem 0;
+  gap: 0;
 }
 
-.pack-pct {
-  font-size: .68rem;
-  font-weight: 700;
-  margin-top: .55rem;
-  text-align: center;
+.divider-line { flex: 1; width: 2px; background: var(--g200); min-height: 20px; }
+
+.divider-badge {
+  display: flex; flex-direction: column; align-items: center;
+  background: white; border: 2px solid var(--p);
+  border-radius: 10px; padding: .6rem .5rem; gap: 2px;
+  text-align: center; margin: .5rem 0;
+  box-shadow: 0 0 0 3px var(--p-light);
 }
 
-.pack-pct-you { color: var(--g400); }
-.pack-pct-us  { color: var(--p); }
+.divider-paw { font-size: 1.1rem; line-height: 1; }
+.divider-label { font-size: .52rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--g400); line-height: 1.3; }
+.divider-amount { font-size: .78rem; font-weight: 800; color: var(--p); }
 
-.pack-arrow {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 1.75rem;
-  gap: 4px;
-  color: var(--p);
+.divider-arrow { font-size: 1.1rem; color: var(--p); margin: .35rem 0; }
+
+/* ─ Story footer ────────────────────── */
+.story-footer {
+  border-top: 1.5px solid var(--g200);
+  margin-top: 1.25rem; padding-top: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  gap: .5rem; flex-wrap: wrap;
 }
 
-.pack-arrow-icon { font-size: 1.15rem; line-height: 1; }
-.pack-arrow-note { font-size: .58rem; font-weight: 700; color: var(--p); text-align: center; line-height: 1.3; }
+.sf-label { font-size: .72rem; color: var(--g600); }
+.sf-limit { font-weight: 800; color: var(--p); font-size: .82rem; }
+.sf-arrow { color: var(--g400); font-size: .8rem; }
+.sf-dest  { font-size: .72rem; font-weight: 700; color: var(--p); }
 
-/* ── Controls ────────────────────────────────── */
-.ctrl {
-  padding: 1.15rem 0;
-  border-bottom: 1px solid var(--g200);
+.sf-pin {
+  display: flex; align-items: center; gap: .35rem;
+  background: var(--p-light); border: 1.5px solid var(--p-mid);
+  border-radius: 100px; padding: .3rem .75rem;
+  font-size: .72rem;
 }
+
+/* ─ Controls ────────────────────────── */
+.ctrl { padding: 1.1rem 0; border-bottom: 1px solid var(--g200); }
 .ctrl:first-child { padding-top: 0; }
 .ctrl:last-child  { padding-bottom: 0; border-bottom: none; }
-
-.ctrl-q {
-  font-size: .9rem;
-  font-weight: 500;
-  color: var(--g700);
-  margin-bottom: .15rem;
-  line-height: 1.4;
-}
-
-.ctrl-tech {
-  font-size: .68rem;
-  font-weight: 700;
-  color: var(--p);
-  margin-bottom: .65rem;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-}
-
-.ctrl-row {
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-}
+.ctrl-q    { font-size: .9rem; font-weight: 500; color: var(--g600); margin-bottom: .15rem; line-height: 1.4; }
+.ctrl-tech { font-size: .67rem; font-weight: 700; color: var(--p); margin-bottom: .6rem; text-transform: uppercase; letter-spacing: .06em; }
+.ctrl-row  { display: flex; align-items: center; gap: .75rem; }
 
 input[type=range] {
-  flex: 1;
-  -webkit-appearance: none;
-  height: 5px;
-  background: var(--g200);
-  border-radius: 3px;
-  outline: none;
-  cursor: pointer;
+  flex: 1; -webkit-appearance: none; height: 5px;
+  background: var(--g200); border-radius: 3px; outline: none; cursor: pointer;
 }
-
 input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 22px;
-  height: 22px;
-  background: var(--p);
-  border-radius: 50%;
-  cursor: pointer;
-  border: 3px solid white;
-  box-shadow: 0 0 0 2px var(--p);
+  -webkit-appearance: none; width: 22px; height: 22px;
+  background: var(--p); border-radius: 50%; cursor: pointer;
+  border: 3px solid white; box-shadow: 0 0 0 2px var(--p);
   transition: transform .1s ease;
 }
-
 input[type=range]:active::-webkit-slider-thumb { transform: scale(1.15); }
 
-.ctrl-val {
-  font-size: .88rem;
-  font-weight: 800;
-  color: var(--p);
-  min-width: 68px;
-  text-align: right;
-  tabular-nums: true;
-  font-variant-numeric: tabular-nums;
-}
-
-.ctrl-hints {
-  display: flex;
-  justify-content: space-between;
-  font-size: .58rem;
-  color: var(--g400);
-  margin-top: .3rem;
-  font-weight: 500;
-}
-
-/* ── Legend ──────────────────────────────────── */
-.legend {
-  display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.25rem;
-  align-items: center;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: .35rem;
-  font-size: .65rem;
-  color: var(--g700);
-  font-weight: 500;
-}
-
-.legend-swatch {
-  width: 14px;
-  height: 8px;
-  border-radius: 2px;
-}
-
-.sw-you { background: var(--p-light); border: 1.5px solid var(--p-mid); }
-.sw-us  { background: var(--p); }
-.sw-out { background: var(--g200); }
+.ctrl-val  { font-size: .88rem; font-weight: 800; color: var(--p); min-width: 68px; text-align: right; font-variant-numeric: tabular-nums; }
+.ctrl-hints { display: flex; justify-content: space-between; font-size: .58rem; color: var(--g400); margin-top: .28rem; font-weight: 500; }
 </style>
 </head>
 <body>
 
-<!-- ──────── Header ──────── -->
 <div class="brand">ManyPets</div>
 <h1>You take them everywhere.<br><em>We help carry what comes with it.</em></h1>
-<p class="sub">Customize your plan by answering three questions about the hike.</p>
+<p class="tagline">It's you, your pup, and a friend to share the load.</p>
 
-<!-- ──────── Summary strip ──────── -->
+<!-- Summary strip -->
 <div class="strip">
-  <div class="strip-item">
-    <span class="sl">Deductible</span>
-    <span class="sv" id="sum-ded">$250</span>
-  </div>
-  <div class="strip-item">
-    <span class="sl">Reimbursement</span>
-    <span class="sv" id="sum-reim">80%</span>
-  </div>
-  <div class="strip-item">
-    <span class="sl">Annual Limit</span>
-    <span class="sv" id="sum-lim">$15,000</span>
-  </div>
-  <div class="strip-item">
-    <span class="sl">Est. Monthly</span>
-    <span class="sv" id="sum-mo">~$42</span>
-  </div>
+  <div class="si"><span class="sl">Deductible</span><span class="sv" id="sum-ded">$250</span></div>
+  <div class="si"><span class="sl">Reimbursement</span><span class="sv" id="sum-reim">80%</span></div>
+  <div class="si"><span class="sl">Annual Limit</span><span class="sv" id="sum-lim">$15,000</span></div>
+  <div class="si"><span class="sl">Est. Monthly</span><span class="sv" id="sum-mo">~$42</span></div>
 </div>
 
-<!-- ──────── Trail card ──────── -->
+<!-- Trail bar card -->
 <div class="card">
-  <div class="card-label">The Journey</div>
-
-  <!-- Hikers -->
-  <div class="hikers">
-    <div class="hiker">
-      <div class="hk hk-you">You</div>
-      <span class="hk-name">You</span>
-    </div>
-    <div class="hiker">
-      <div class="hk hk-dog">Dog</div>
-      <span class="hk-name">Buddy</span>
-    </div>
-    <span class="hk-sep">+</span>
-    <div class="hiker">
-      <div class="hk hk-us">Many<br>Pets</div>
-      <span class="hk-name">Us</span>
-    </div>
-  </div>
-
-  <!-- Trail legend -->
-  <div class="legend">
-    <div class="legend-item"><div class="legend-swatch sw-you"></div>You carry alone</div>
-    <div class="legend-item"><div class="legend-swatch sw-us"></div>We help together</div>
-    <div class="legend-item"><div class="legend-swatch sw-out"></div>Beyond your limit</div>
-  </div>
-
-  <!-- Trail bar -->
+  <div class="card-label">The trail — where each moment happens</div>
   <div class="trail-wrap">
     <div class="trail-track">
-      <div class="fill-pre" id="fill-pre"></div>
-      <div class="fill-post" id="fill-post"></div>
+      <div class="t-fill-pre"  id="fill-pre"></div>
+      <div class="t-fill-post" id="fill-post"></div>
     </div>
-
-    <!-- Deductible marker -->
-    <div class="t-marker" id="t-ded">
-      <div class="t-dot t-dot-ded">🐾</div>
-      <div class="t-tag" id="tag-ded">We join · $250</div>
+    <div class="t-pin" id="pin-ded">
+      <div class="t-pin-dot t-pin-dot-ded">🐾</div>
+      <div class="t-pin-tag" id="tag-ded">We join · $250</div>
     </div>
-
-    <!-- Annual limit marker -->
-    <div class="t-marker" id="t-lim">
-      <div class="t-dot t-dot-lim">🏔</div>
-      <div class="t-tag" id="tag-lim">$15k limit</div>
+    <div class="t-pin" id="pin-lim">
+      <div class="t-pin-dot t-pin-dot-lim">🏔</div>
+      <div class="t-pin-tag" id="tag-lim">$15k limit</div>
     </div>
   </div>
-
   <div class="trail-ends">
     <span>Trailhead</span>
     <span id="trail-dest">Mountain Pass</span>
   </div>
-
-  <div class="trail-narrative" id="narrative">
-    You carry the first <strong>$250</strong> on your own — then we jump in and carry <strong>80%</strong> of what's left, all the way to <strong>$15k</strong>.
-  </div>
 </div>
 
-<!-- ──────── Pack card ──────── -->
+<!-- Story card -->
 <div class="card">
-  <div class="card-label">How we share the load — after your deductible is met</div>
+  <div class="card-label">How the load is carried</div>
 
-  <div class="handoff-badge">
-    <span>🐾 Deductible hit — we start helping</span>
-  </div>
+  <div class="story-grid">
 
-  <div class="packs-grid">
-    <!-- Your pack -->
-    <div>
-      <div class="pack-label pack-label-you">Your Pack</div>
-      <div class="pack-box pack-box-you">
-        <div class="pack-chips" id="chips-you"></div>
+    <!-- ── Column 1: Before deductible ── -->
+    <div class="story-col">
+      <div class="col-header">
+        <span class="col-title">You carry first</span>
+        <span class="col-sub" id="col1-sub">Until $250 in vet bills</span>
       </div>
-      <div class="pack-pct pack-pct-you" id="pct-you">20% of the load</div>
+
+      <div class="chars-row">
+        <!-- YOU -->
+        <div class="chr chr-you">
+          <div class="chr-box">YOU</div>
+          <span class="chr-status status-heavy">Full pack</span>
+          <span class="chr-name">You</span>
+        </div>
+        <!-- DOG -->
+        <div class="chr chr-dog">
+          <div class="chr-box">DOG</div>
+          <span class="chr-name">Buddy</span>
+        </div>
+        <!-- MANYPETS waiting -->
+        <div class="chr chr-friend-wait">
+          <div class="chr-box">MANY<br>PETS</div>
+          <span class="chr-status status-empty">No pack</span>
+          <span class="chr-name">Us</span>
+        </div>
+      </div>
+
+      <div class="packs-area">
+        <div class="mini-pack">
+          <div class="mp-label">Your pack — everything</div>
+          <div class="chips" id="before-chips"></div>
+        </div>
+        <div class="mini-pack mini-pack-empty">
+          <div class="mp-label">ManyPets' pack</div>
+          <div class="mp-empty-msg">Empty — not yet</div>
+        </div>
+      </div>
     </div>
 
-    <!-- Arrow -->
-    <div class="pack-arrow">
-      <div class="pack-arrow-icon">→</div>
-      <div class="pack-arrow-note">We take<br>the load</div>
+    <!-- ── Divider ── -->
+    <div class="divider-col">
+      <div class="divider-line"></div>
+      <div class="divider-badge">
+        <span class="divider-paw">🐾</span>
+        <span class="divider-label">Deductible<br>met</span>
+        <strong class="divider-amount" id="div-ded">$250</strong>
+      </div>
+      <div class="divider-arrow">↓</div>
+      <div class="divider-line"></div>
     </div>
 
-    <!-- ManyPets pack -->
-    <div>
-      <div class="pack-label pack-label-us">ManyPets' Pack</div>
-      <div class="pack-box pack-box-us">
-        <div class="pack-chips" id="chips-us"></div>
+    <!-- ── Column 2: After deductible ── -->
+    <div class="story-col">
+      <div class="col-header">
+        <span class="col-title">We share from here</span>
+        <span class="col-sub col-sub-purple" id="col2-sub">80% shifts to us</span>
       </div>
-      <div class="pack-pct pack-pct-us" id="pct-us">80% of the load</div>
+
+      <div class="chars-row">
+        <!-- YOU lighter -->
+        <div class="chr chr-you">
+          <div class="chr-box">YOU</div>
+          <span class="chr-status status-light">Lighter</span>
+          <span class="chr-name">You</span>
+        </div>
+        <!-- DOG -->
+        <div class="chr chr-dog">
+          <div class="chr-box">DOG</div>
+          <span class="chr-name">Buddy</span>
+        </div>
+        <!-- MANYPETS active -->
+        <div class="chr chr-friend-act">
+          <div class="chr-box">MANY<br>PETS</div>
+          <span class="chr-status status-helping">Helping</span>
+          <span class="chr-name">Us</span>
+        </div>
+      </div>
+
+      <div class="packs-area">
+        <div class="mini-pack">
+          <div class="mp-label">Your pack — <span id="your-pct">20%</span></div>
+          <div class="chips" id="after-you-chips"></div>
+        </div>
+        <div class="mini-pack mini-pack-friend">
+          <div class="mp-label mp-label-purple">ManyPets' pack — <span id="their-pct">80%</span></div>
+          <div class="chips" id="after-their-chips"></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /story-grid -->
+
+  <!-- Annual limit footer -->
+  <div class="story-footer">
+    <div class="sf-pin">
+      <span>🏔</span>
+      <span class="sf-label">ManyPets stays with you for up to</span>
+      <span class="sf-limit" id="sf-limit">$15,000</span>
+      <span class="sf-arrow">→</span>
+      <span class="sf-dest" id="sf-dest">Mountain Pass</span>
     </div>
   </div>
 </div>
 
-<!-- ──────── Controls card ──────── -->
+<!-- Controls card -->
 <div class="card">
   <div class="card-label">Build your plan</div>
 
-  <!-- Deductible -->
   <div class="ctrl">
     <div class="ctrl-q">Before we jump in, how much are you comfortable carrying yourself?</div>
     <div class="ctrl-tech">Deductible · <span id="tech-ded">$250</span></div>
@@ -562,13 +401,9 @@ input[type=range]:active::-webkit-slider-thumb { transform: scale(1.15); }
       <input type="range" id="sl-ded" min="100" max="1000" step="50" value="250">
       <span class="ctrl-val" id="disp-ded">$250</span>
     </div>
-    <div class="ctrl-hints">
-      <span>$100 · we join you sooner</span>
-      <span>$1,000 · you carry more first</span>
-    </div>
+    <div class="ctrl-hints"><span>$100 · we join you sooner</span><span>$1,000 · you carry more first</span></div>
   </div>
 
-  <!-- Reimbursement -->
   <div class="ctrl">
     <div class="ctrl-q">Once we're helping, how much of the load should we carry?</div>
     <div class="ctrl-tech">Reimbursement · <span id="tech-reim">80%</span></div>
@@ -576,13 +411,9 @@ input[type=range]:active::-webkit-slider-thumb { transform: scale(1.15); }
       <input type="range" id="sl-reim" min="50" max="90" step="10" value="80">
       <span class="ctrl-val" id="disp-reim">80%</span>
     </div>
-    <div class="ctrl-hints">
-      <span>50% · split evenly</span>
-      <span>90% · we carry most</span>
-    </div>
+    <div class="ctrl-hints"><span>50% · split evenly</span><span>90% · we carry most</span></div>
   </div>
 
-  <!-- Annual limit -->
   <div class="ctrl">
     <div class="ctrl-q">How far do you want our help to go?</div>
     <div class="ctrl-tech">Annual Limit · <span id="tech-lim">$15,000</span></div>
@@ -590,66 +421,53 @@ input[type=range]:active::-webkit-slider-thumb { transform: scale(1.15); }
       <input type="range" id="sl-lim" min="5000" max="25000" step="5000" value="15000">
       <span class="ctrl-val" id="disp-lim">$15,000</span>
     </div>
-    <div class="ctrl-hints">
-      <span>$5k · neighborhood trail</span>
-      <span>$25k · all the way to the summit</span>
-    </div>
+    <div class="ctrl-hints"><span>$5k · neighborhood trail</span><span>$25k · all the way to the summit</span></div>
   </div>
 </div>
 
 <script>
 const GEAR = [
-  'Injuries', 'Illness', 'Diagnostics', 'Medications',
-  'Surgeries', 'Emergencies', 'Recovery', 'Specialist',
-  'Dental', 'Vaccinations'
+  'Injuries','Illness','Diagnostics','Medications',
+  'Surgeries','Emergencies','Recovery','Specialist',
+  'Dental','Vaccinations'
 ];
 
-const DESTINATIONS = {
-  5000:  'Neighborhood Trail',
-  10000: 'Through the Woods',
-  15000: 'Mountain Pass',
-  20000: 'High Country',
-  25000: 'All the Way to the Summit'
+const DESTS = {
+  5000:'Neighborhood Trail', 10000:'Through the Woods',
+  15000:'Mountain Pass', 20000:'High Country', 25000:'All the Way to the Summit'
 };
 
-// Create chips once; move them between containers
-const chips = [];
-const chipsYou = document.getElementById('chips-you');
-const chipsUs  = document.getElementById('chips-us');
-
+// Before-panel chips: static, always show all gear
+const beforeContainer = document.getElementById('before-chips');
 GEAR.forEach(name => {
+  const el = document.createElement('div');
+  el.className = 'chip chip-static';
+  el.textContent = name;
+  beforeContainer.appendChild(el);
+});
+
+// After-panel chips: persistent, move between your/their containers
+const afterYouCont   = document.getElementById('after-you-chips');
+const afterTheirCont = document.getElementById('after-their-chips');
+const afterChips = GEAR.map(name => {
   const el = document.createElement('div');
   el.className = 'chip';
   el.textContent = name;
-  chipsYou.appendChild(el);
-  chips.push(el);
+  afterYouCont.appendChild(el);
+  return el;
 });
 
-function fmt(n) {
-  if (n >= 1000) return '$' + (n / 1000) + 'k';
-  return '$' + n;
+function fmt(n)     { return n >= 1000 ? '$' + (n/1000) + 'k' : '$' + n; }
+function fmtFull(n) { return '$' + n.toLocaleString(); }
+function calcMo(d,r,l) {
+  return Math.round(30 + (1000-d)/100*1.5 + (r-50)/10*1.5 + (l-5000)/5000*2.5);
 }
-
-function fmtFull(n) {
-  return '$' + n.toLocaleString();
-}
-
-function calcMonthly(ded, reim, lim) {
-  let b = 30;
-  b += (1000 - ded) / 100 * 1.5;
-  b += (reim - 50) / 10 * 1.5;
-  b += (lim - 5000) / 5000 * 2.5;
-  return Math.round(b);
-}
-
-function setText(id, val) {
-  document.getElementById(id).textContent = val;
-}
+function set(id, v) { document.getElementById(id).textContent = v; }
 
 function update() {
-  const ded  = parseInt(document.getElementById('sl-ded').value);
-  const reim = parseInt(document.getElementById('sl-reim').value);
-  const lim  = parseInt(document.getElementById('sl-lim').value);
+  const ded  = +document.getElementById('sl-ded').value;
+  const reim = +document.getElementById('sl-reim').value;
+  const lim  = +document.getElementById('sl-lim').value;
 
   const dedStr  = '$' + ded;
   const reimStr = reim + '%';
@@ -657,60 +475,57 @@ function update() {
   const limShort = fmt(lim);
 
   // Summary strip
-  setText('sum-ded',  dedStr);
-  setText('sum-reim', reimStr);
-  setText('sum-lim',  limFull);
-  setText('sum-mo',   '~$' + calcMonthly(ded, reim, lim));
+  set('sum-ded', dedStr); set('sum-reim', reimStr);
+  set('sum-lim', limFull); set('sum-mo', '~$' + calcMo(ded, reim, lim));
 
-  // Control labels
-  setText('tech-ded',  dedStr);  setText('disp-ded',  dedStr);
-  setText('tech-reim', reimStr); setText('disp-reim', reimStr);
-  setText('tech-lim',  limFull); setText('disp-lim',  limFull);
+  // Control readouts
+  set('tech-ded', dedStr);  set('disp-ded', dedStr);
+  set('tech-reim', reimStr); set('disp-reim', reimStr);
+  set('tech-lim', limFull); set('disp-lim', limFull);
+
+  // Story column labels
+  set('col1-sub', 'Until ' + dedStr + ' in vet bills');
+  set('col2-sub', reim + '% shifts to us');
+  set('div-ded', dedStr);
+  set('your-pct', (100 - reim) + '%');
+  set('their-pct', reim + '%');
+
+  // Annual limit footer
+  set('sf-limit', limFull);
+  set('sf-dest',  DESTS[lim] || 'The Summit');
 
   // Trail positions
-  // Deductible $100–$1000 → 12%–46% along trail
-  const dedPct = 12 + (ded - 100) / 900 * 34;
-  // Annual limit $5k–$25k → 66%–96%
-  const limPct = 66 + (lim - 5000) / 20000 * 30;
+  const dedPct = 12 + (ded - 100) / 900 * 34;  // 12%–46%
+  const limPct = 66 + (lim - 5000) / 20000 * 30; // 66%–96%
 
-  document.getElementById('fill-pre').style.width  = dedPct + '%';
-  document.getElementById('fill-post').style.left  = dedPct + '%';
-  document.getElementById('fill-post').style.width = Math.max(0, limPct - dedPct) + '%';
+  document.getElementById('fill-pre').style.width   = dedPct + '%';
+  document.getElementById('fill-post').style.left   = dedPct + '%';
+  document.getElementById('fill-post').style.width  = Math.max(0, limPct - dedPct) + '%';
+  document.getElementById('pin-ded').style.left = dedPct + '%';
+  document.getElementById('pin-lim').style.left = limPct + '%';
+  set('tag-ded', 'We join · ' + dedStr);
+  set('tag-lim', limShort + ' limit');
+  set('trail-dest', DESTS[lim] || 'Summit');
 
-  document.getElementById('t-ded').style.left = dedPct + '%';
-  document.getElementById('t-lim').style.left = limPct + '%';
+  // After-panel chip distribution (chips move, not recreated)
+  const total    = afterChips.length;
+  const theirCnt = Math.round(total * reim / 100);
+  const yourCnt  = total - theirCnt;
 
-  setText('tag-ded', 'We join · ' + dedStr);
-  setText('tag-lim', limShort + ' limit');
-  setText('trail-dest', DESTINATIONS[lim] || 'Summit');
-
-  // Narrative
-  document.getElementById('narrative').innerHTML =
-    `You carry the first <strong>${dedStr}</strong> on your own — then we jump in and carry <strong>${reimStr}</strong> of what's left, all the way to <strong>${limShort}</strong>.`;
-
-  // Chips: move between containers (no recreation)
-  const total    = chips.length;
-  const usCount  = Math.round(total * reim / 100);
-  const youCount = total - usCount;
-
-  chips.forEach((chip, i) => {
-    if (i < youCount) {
-      chip.classList.remove('us');
-      if (chip.parentNode !== chipsYou) chipsYou.appendChild(chip);
+  afterChips.forEach((chip, i) => {
+    if (i < yourCnt) {
+      chip.classList.remove('chip-theirs');
+      if (chip.parentNode !== afterYouCont) afterYouCont.appendChild(chip);
     } else {
-      chip.classList.add('us');
-      if (chip.parentNode !== chipsUs) chipsUs.appendChild(chip);
+      chip.classList.add('chip-theirs');
+      if (chip.parentNode !== afterTheirCont) afterTheirCont.appendChild(chip);
     }
   });
-
-  setText('pct-you', (100 - reim) + '% of the load');
-  setText('pct-us',  reim + '% of the load');
 }
 
-document.getElementById('sl-ded').addEventListener('input', update);
-document.getElementById('sl-reim').addEventListener('input', update);
-document.getElementById('sl-lim').addEventListener('input', update);
-
+['sl-ded','sl-reim','sl-lim'].forEach(id =>
+  document.getElementById(id).addEventListener('input', update)
+);
 update();
 </script>
 </body>
